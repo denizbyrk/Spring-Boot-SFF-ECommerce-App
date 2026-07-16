@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    URLs:
+      - name: User Service
+        url: /user-service/v3/api-docs
+
+      - name: Product Service
+        url: /product-service/v3/api-docs
+
+      - name: Order Service
+        url: /order-service/v3/api-docs
+
+      - name: Payment Service
+        url: /payment-service/v3/api-docs
+
+      - name: Inventory Service
+        url: /inventory-service/v3/api-docs
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
